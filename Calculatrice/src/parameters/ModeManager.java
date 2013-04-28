@@ -19,6 +19,10 @@ public class ModeManager {
 				(value instanceof Float && instruction.equals(Instruction.F));
 	}
 	
+	public static void setInstruction(Instruction instruction)	{
+		ModeManager.instruction = instruction;
+	}
+	
 	
 
 }

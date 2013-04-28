@@ -14,5 +14,9 @@ public class Num implements Token, Value{
 		return this.num;
 	}
 	
+	public String toString(){
+		return ""+this.num;
+	}
+	
 
 }

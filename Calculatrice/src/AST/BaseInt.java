@@ -16,16 +16,15 @@ public class BaseInt implements AST {
 	
 	private Num leInt;
 	
-	public void parse() throws MemoryException{
+	
+	public void parse() throws UnexistingToken, IOException{
+		Token token = Lexer.getToken();
+		this.parse(token);
 		
-		boolean askAgain = false;
-		
-		
-		do{
-			
-			
-		try {
-			Token token = Lexer.getToken();
+	}
+	
+	public void parse(Token token){					
+
 			boolean isInt = token instanceof Num && ModeManager.rightType((Num)token);
 			boolean isRetour = Instruction.R.equals(token);
 			
@@ -34,22 +33,25 @@ public class BaseInt implements AST {
 			}
 			else{
 				if(isRetour){
-					leInt = new Num(Memory.retourneInt());
+					try {
+						leInt = new Num(Memory.retourneInt());
+					} catch (MemoryException e) {
+						System.out.println(e.toString());
+					}
 				}
 				else{
 					ArrayList<String> expectedTypes = new ArrayList<String>();
 					expectedTypes.add("Integer");
 					expectedTypes.add("R");
-					askAgain = true;
 				}
-			}
-		} catch (UnexistingToken | IOException e) {
-			System.out.println(e.toString());
-			askAgain = true;
-		}
+			}		
 		
-		
-		}while(askAgain);
 	}
+
+	public Num getLeInt() {
+		return leInt;
+	}
+
+
 
 }

@@ -4,6 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import parameters.ModeManager;
+
+import token.Float;
 import token.Instruction;
 import token.Num;
 import token.Op;
@@ -26,6 +29,8 @@ public class Lexer {
 			return Instruction.M;
 		case "R":
 			return Instruction.R;
+		case "F":
+			return Instruction.F;
 		case "+":
 			return Op.PLUS;
 		case "-":
@@ -36,16 +41,14 @@ public class Lexer {
 			return Op.DIVISE;
 		default:
 			try {
-				double toRet = Double.parseDouble(toIdentify);
-				return new token.Float(toRet);
-			} catch (Exception e) {
-				try {
-					int toRet = Integer.parseInt(toIdentify);
-					return new Num(toRet);
-				} catch (Exception ex) {
-					throw new UnexistingToken(toIdentify);
-
+				if (ModeManager.instruction.equals(Instruction.E)) {
+					return new Num(Integer.parseInt(toIdentify));
+				} else {
+					return new Float(Double.parseDouble(toIdentify));
 				}
+
+			} catch (Exception e) {
+				throw new UnexistingToken(toIdentify);
 
 			}
 		}

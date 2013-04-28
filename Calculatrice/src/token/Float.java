@@ -11,6 +11,10 @@ public class Float implements Token, Value{
 	public double getValue(){
 		return this.value;
 	}
+
+	public String toString(){
+		return ""+this.value;
+	}
 	
 	
 
