@@ -1,7 +1,7 @@
 package token;
 
 public enum Instruction implements Token {
-	E("E"), M("M"), R("R");
+	E("E"), F("F"), M("M"), R("R");
 	
 	private String value;
 

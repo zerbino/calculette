@@ -17,7 +17,7 @@ CalculInt ::=  TermeInt TermeInt OP
 TermeBaseDouble ::= FLOAT | RETOUR
 CalculDouble ::= TermeBaseDouble TermeBaseDouble OP
 TermeDouble ::= CalculDouble | TermeBaseDouble  
-CalculDouble ::=  TermeDouble TermeDouble O
+CalculDouble ::=  TermeDouble TermeDouble OP
 
 Calcul ::= CalculDouble | CalculInt
 Memorisation ::= Calcul MEMO

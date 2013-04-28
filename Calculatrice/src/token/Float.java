@@ -1,6 +1,6 @@
 package token;
 
-public class Float implements Token{
+public class Float implements Token, Value{
 	
 	private double value;
 

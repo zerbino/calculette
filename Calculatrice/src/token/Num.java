@@ -1,7 +1,7 @@
 package token;
 
 
-public class Num implements Token{
+public class Num implements Token, Value{
 	
 	protected int num;
 
