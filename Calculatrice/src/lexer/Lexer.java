@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import AST.NoInputException;
+
 import parameters.ModeManager;
 
 import token.Float;
@@ -12,15 +14,27 @@ import token.Num;
 import token.Op;
 import token.Token;
 
-public class Lexer {
+public abstract class Lexer {
 
-	static BufferedReader input = new BufferedReader(new InputStreamReader(
-			System.in));
+	
+	
+	protected abstract String getInputString() throws IOException;
+	
+	
+	public static Token getToken() throws UnexistingToken, IOException, NoInputException{
+		return TestLexer.getToken();
+	}
+	
+		
 
-	public static Token getToken() throws IOException, UnexistingToken {
+	protected Token nextToken() throws IOException, UnexistingToken, NoInputException {
 		System.out.flush();
 
-		String toIdentify = input.readLine();
+		String toIdentify = this.getInputString();
+		
+		if(toIdentify == null){
+			throw new NoInputException();
+		}
 
 		switch (toIdentify) {
 		case "E":
@@ -51,6 +65,7 @@ public class Lexer {
 				throw new UnexistingToken(toIdentify);
 
 			}
+			
 		}
 	}
 

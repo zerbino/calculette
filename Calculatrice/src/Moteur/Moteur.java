@@ -8,6 +8,7 @@ import parameters.ModeManager;
 import token.Instruction;
 import token.Num;
 import AST.MyInput;
+import AST.NoInputException;
 import AST.OperationException;
 import AST.UnexpectedType;
 import AST.WrongTypeException;
@@ -15,6 +16,7 @@ import AST.WrongTypeException;
 public class Moteur {
 	
 	public static void main(String[] args) {
+		boolean isInput= true;
 		do{
 			MyInput input; 
 			if(Instruction.E.equals(ModeManager.instruction)){
@@ -29,8 +31,10 @@ public class Moteur {
 			} catch (UnexistingToken | IOException | MemoryException
 					| WrongTypeException |UnexpectedType | OperationException e) {
 				System.out.println(e.toString());
+			} catch (NoInputException e) {
+				isInput = false;
 			} 
-		}while(true);
+		}while(isInput);
 	}
 
 }

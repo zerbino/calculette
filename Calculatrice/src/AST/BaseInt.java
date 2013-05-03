@@ -5,6 +5,7 @@ import java.rmi.UnexpectedException;
 import java.util.ArrayList;
 
 import lexer.Lexer;
+import lexer.LexerBuffer;
 import lexer.UnexistingToken;
 import parameters.ModeManager;
 import token.Instruction;
@@ -17,7 +18,7 @@ public class BaseInt<E extends Value> implements AST {
 	private E leInt;
 	
 	
-	public void parse() throws UnexistingToken, IOException, UnexpectedType{
+	public void parse() throws UnexistingToken, IOException, UnexpectedType, NoInputException{
 		Token token = Lexer.getToken();
 		this.parse(token);
 		
