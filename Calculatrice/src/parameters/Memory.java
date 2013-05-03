@@ -1,5 +1,9 @@
 package parameters;
 
+import token.Instruction;
+import token.Num;
+import token.Value;
+
 public class Memory {
 	
 	private static int intRegistered;
@@ -8,12 +12,38 @@ public class Memory {
 	private static double floatRegistered;
 	private static boolean isRegisteredFloat = false;
 	
-	public static void remember(int intValue){
+	private static void remember(int intValue){
 		isRegisteredInt = true;
 		intRegistered = intValue;
 	}
 	
-	public static int retourneInt() throws MemoryException{
+	private static void remember(Double value){
+		isRegisteredFloat = true;
+		floatRegistered = value;
+	}
+	
+	public static void remember(Value value){
+		
+		if(Instruction.E.equals(ModeManager.instruction)){
+			remember(((Num)value).getValue());
+		}
+		else{
+			remember(((token.Float)value).getValue());
+		}
+	
+	}
+	
+	public static Value retourne() throws MemoryException{
+		if(Instruction.E.equals(ModeManager.instruction)){
+			return new Num(retourneInt());
+			
+		}
+		else{
+			return new token.Float(retourneDouble());
+		}
+	}
+	
+	private static int retourneInt() throws MemoryException{
 		if(isRegisteredInt){
 			return intRegistered;
 		}
@@ -22,7 +52,7 @@ public class Memory {
 		}
 	}
 	
-	public static double retourneDouble() throws MemoryException{
+	private static double retourneDouble() throws MemoryException{
 		if(isRegisteredFloat){
 			return floatRegistered;
 		}

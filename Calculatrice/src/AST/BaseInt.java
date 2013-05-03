@@ -1,56 +1,56 @@
 package AST;
 
 import java.io.IOException;
+import java.rmi.UnexpectedException;
 import java.util.ArrayList;
 
 import lexer.Lexer;
 import lexer.UnexistingToken;
-import parameters.Memory;
-import parameters.MemoryException;
 import parameters.ModeManager;
 import token.Instruction;
 import token.Num;
 import token.Token;
+import token.Value;
 
-public class BaseInt implements AST {
+public class BaseInt<E extends Value> implements AST {
 	
-	private Num leInt;
+	private E leInt;
 	
 	
-	public void parse() throws UnexistingToken, IOException{
+	public void parse() throws UnexistingToken, IOException, UnexpectedType{
 		Token token = Lexer.getToken();
 		this.parse(token);
 		
 	}
 	
-	public void parse(Token token){					
+	public void parse(Token token) throws UnexpectedType{					
 
-			boolean isInt = token instanceof Num && ModeManager.rightType((Num)token);
-			boolean isRetour = Instruction.R.equals(token);
+			boolean isInt = token instanceof Value && ModeManager.rightType((E)token);
 			
 			if(isInt){
-				leInt = (Num)token;
+				leInt = (E)token;
+				stack.Stack.addElement(leInt);
+
 			}
 			else{
-				if(isRetour){
-					try {
-						leInt = new Num(Memory.retourneInt());
-					} catch (MemoryException e) {
-						System.out.println(e.toString());
-					}
+				if(Instruction.F.equals(token) || Instruction.E.equals(token)){
+					ModeManager.setInstruction((Instruction)token);
 				}
 				else{
-					ArrayList<String> expectedTypes = new ArrayList<String>();
-					expectedTypes.add("Integer");
-					expectedTypes.add("R");
+					ArrayList<String> array = new ArrayList<String>();
+					array.add("Double or integer");
+					array.add("R");
+					array.add("M");
+					throw new UnexpectedType(array);
 				}
-			}		
+				
+			}	
+			
+			
 		
 	}
-
-	public Num getLeInt() {
-		return leInt;
-	}
+	
+	
 
 
 

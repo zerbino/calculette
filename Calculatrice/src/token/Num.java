@@ -10,8 +10,8 @@ public class Num implements Token, Value{
 		this.num = num;
 	}
 
-	public int getValue(){
-		return this.num;
+	public double getValue(){
+		return (double) this.num;
 	}
 	
 	public String toString(){
