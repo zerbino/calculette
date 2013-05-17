@@ -16,21 +16,20 @@ import token.Token;
 
 public abstract class Lexer {
 
-	
-	
 	protected abstract String getInputString() throws IOException;
-	
-	
 
-	
-		
+	public static Token getToken() throws UnexistingToken, IOException,
+			NoInputException {
+		return LexerBuffer.getToken();
+	}
 
-	protected Token nextToken() throws IOException, UnexistingToken, NoInputException {
+	protected Token nextToken() throws IOException, UnexistingToken,
+			NoInputException {
 		System.out.flush();
 
 		String toIdentify = this.getInputString();
-		
-		if(toIdentify == null){
+
+		if (toIdentify == null) {
 			throw new NoInputException();
 		}
 
@@ -63,7 +62,7 @@ public abstract class Lexer {
 				throw new UnexistingToken(toIdentify);
 
 			}
-			
+
 		}
 	}
 

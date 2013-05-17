@@ -4,6 +4,12 @@ import token.Instruction;
 import token.Num;
 import token.Value;
 
+/**
+ * This class is a representation of the memory of the calculator.
+ * @author Raoul
+ *
+ */
+
 public class Memory {
 	
 	private static int intRegistered;
@@ -25,7 +31,7 @@ public class Memory {
 	public static void remember(Value value){
 		
 		if(Instruction.E.equals(ModeManager.instruction)){
-			remember(((Num)value).getValue());
+			remember((int)((Num)value).getValue());
 		}
 		else{
 			remember(((token.Float)value).getValue());

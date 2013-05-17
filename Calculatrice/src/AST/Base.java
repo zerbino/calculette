@@ -1,5 +1,11 @@
 package AST;
 
+/**
+ * 
+ * Abstract representation of the operand input (can be a number : integer or float, the value
+ * corresponding to a "R" call).
+ */
+
 import java.io.IOException;
 import java.rmi.UnexpectedException;
 import java.util.ArrayList;
@@ -14,13 +20,13 @@ import token.Num;
 import token.Token;
 import token.Value;
 
-public class BaseInt<E extends Value> implements AST {
+public class Base<E extends Value> implements AST {
 	
 	private E leInt;
 	
 	
 	public void parse() throws UnexistingToken, IOException, UnexpectedType, NoInputException{
-		Token token = TestLexer.getToken();
+		Token token = Lexer.getToken();
 		this.parse(token);
 		
 	}

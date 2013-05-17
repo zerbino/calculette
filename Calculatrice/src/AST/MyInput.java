@@ -21,7 +21,7 @@ public class MyInput<E extends Value> implements AST {
 	
 	public void parse() throws UnexistingToken, IOException, MemoryException, WrongTypeException, OperationException, UnexpectedType, NoInputException{
 		
-		Token token = TestLexer.getToken();
+		Token token = Lexer.getToken();
 		
 		if(Instruction.E.equals(token) || Instruction.F.equals(token)){
 			ModeManager.setInstruction((Instruction)token);
@@ -37,12 +37,12 @@ public class MyInput<E extends Value> implements AST {
 				}
 				else{
 					if(Instruction.R.equals(token)){
-						BaseInt<E> baseInt = new BaseInt<E>();
+						Base<E> baseInt = new Base<E>();
 						baseInt.parse(Memory.retourne());
 					}
 					else{
 						if(token instanceof Value){
-								BaseInt<E> baseInt = new BaseInt<E>();
+								Base<E> baseInt = new Base<E>();
 								baseInt.parse(token);
 							
 							
