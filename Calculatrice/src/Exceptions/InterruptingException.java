@@ -9,6 +9,10 @@ package Exceptions;
  */
 public class InterruptingException extends Exception {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String message;
 
 	public InterruptingException(String message) {

@@ -18,6 +18,7 @@ public class Moteur {
 	public static void main(String[] args) {
 		boolean isInput= true;
 		do{
+			@SuppressWarnings("rawtypes")
 			MyInput input; 
 			if(Instruction.E.equals(ModeManager.instruction)){
 				input = new MyInput<Num>();
