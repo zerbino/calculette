@@ -21,9 +21,7 @@ public abstract class Lexer {
 	protected abstract String getInputString() throws IOException;
 	
 	
-	public static Token getToken() throws UnexistingToken, IOException, NoInputException{
-		return TestLexer.getToken();
-	}
+
 	
 		
 

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import lexer.Lexer;
 import lexer.LexerBuffer;
+import lexer.TestLexer;
 import lexer.UnexistingToken;
 import parameters.Memory;
 import parameters.MemoryException;
@@ -20,7 +21,7 @@ public class MyInput<E extends Value> implements AST {
 	
 	public void parse() throws UnexistingToken, IOException, MemoryException, WrongTypeException, OperationException, UnexpectedType, NoInputException{
 		
-		Token token = Lexer.getToken();
+		Token token = TestLexer.getToken();
 		
 		if(Instruction.E.equals(token) || Instruction.F.equals(token)){
 			ModeManager.setInstruction((Instruction)token);
