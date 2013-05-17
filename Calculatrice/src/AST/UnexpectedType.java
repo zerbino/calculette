@@ -4,6 +4,10 @@ import java.util.ArrayList;
 
 public class UnexpectedType extends Exception {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ArrayList<String> expectedTypes;
 	
 	public UnexpectedType(ArrayList<String> types){

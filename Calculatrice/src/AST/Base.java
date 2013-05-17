@@ -7,16 +7,12 @@ package AST;
  */
 
 import java.io.IOException;
-import java.rmi.UnexpectedException;
 import java.util.ArrayList;
 
 import lexer.Lexer;
-import lexer.LexerBuffer;
-import lexer.TestLexer;
 import lexer.UnexistingToken;
 import parameters.ModeManager;
 import token.Instruction;
-import token.Num;
 import token.Token;
 import token.Value;
 
@@ -31,6 +27,7 @@ public class Base<E extends Value> implements AST {
 		
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void parse(Token token) throws UnexpectedType{					
 
 			boolean isInt = token instanceof Value && ModeManager.rightType((E)token);

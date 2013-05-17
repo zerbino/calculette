@@ -12,6 +12,7 @@ import token.Value;
 
 public class CalculInt<E extends Value> implements AST {
 
+	@SuppressWarnings("unchecked")
 	public void parse(Token token) throws OperationException {
 
 		if (Stack.size() >= 2) {

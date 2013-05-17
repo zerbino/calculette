@@ -4,15 +4,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import lexer.Lexer;
-import lexer.LexerBuffer;
-import lexer.TestLexer;
 import lexer.UnexistingToken;
 import parameters.Memory;
 import parameters.MemoryException;
 import parameters.ModeManager;
 import stack.Stack;
 import token.Instruction;
-import token.Num;
 import token.Op;
 import token.Token;
 import token.Value;

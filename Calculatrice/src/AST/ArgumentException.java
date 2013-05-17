@@ -10,6 +10,11 @@ import token.Op;
  */
 public class ArgumentException extends OperationException {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private Op op;
 	
 	public ArgumentException(Op op){
