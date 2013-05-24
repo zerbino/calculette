@@ -40,7 +40,7 @@ public class MyInput<E extends Value> implements AST {
 
 					} else {
 						if (token instanceof Op) {
-							CalculInt<E> cal = new CalculInt<E>();
+							Calcul<E> cal = new Calcul<E>();
 							cal.parse(token);
 
 						} else {

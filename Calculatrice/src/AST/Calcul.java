@@ -10,7 +10,7 @@ import token.Op;
 import token.Token;
 import token.Value;
 
-public class CalculInt<E extends Value> implements AST {
+public class Calcul<E extends Value> implements AST {
 
 	@SuppressWarnings("unchecked")
 	public void parse(Token token) throws OperationException {
